@@ -1,0 +1,11 @@
+# User uploads
+uploads/
+
+# IDE files and workspace configuration
+.vscode/
+.idea/
+.gemini/
+.agents/
+.antigravityignore
+*.log
+*.tmp
