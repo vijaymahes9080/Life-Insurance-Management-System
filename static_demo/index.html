@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container{
+	width: 450px;
+    height: 700px;
+    margin:auto;
+	margin-top: 4%;
+	padding-top: 1px;
+}
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  padding-top: 30px;
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 349px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.imgs{
+    margin-top: 2%;
+    margin-left: 42%;
+    width: 15%;
+    height: 15%;
+}
+.error-msg {
+  color: red;
+  margin-bottom: 10px;
+  display: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+}
+</style>
+<title>LIMS Demo - Login</title>
+</head>
+<body>
+<img class="imgs" src="loginlogo.png" alt="Login Logo">
+<div class="container">
+	<div class="login-page">
+	  <div class="form">
+		<form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+		  <div class="error-msg" id="errorMsg">Invalid username or password!</div>
+		  <input type="text" id="username" placeholder="username" required/>
+		  <input type="password" id="password" placeholder="password" required/>
+		  <button type="submit">login</button>
+		</form>
+	  </div>
+	</div>
+</div>
+
+<script>
+function handleLogin(event) {
+    event.preventDefault();
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value;
+    const errorEl = document.getElementById("errorMsg");
+
+    if ((user === "admin" && pass === "12345") || (user === "555" && pass === "666")) {
+        localStorage.setItem("lims_username", user);
+        window.location.href = "home.html";
+    } else if (user === "1511986023" && pass === "123") {
+        localStorage.setItem("lims_username", user);
+        window.location.href = "clientHome.html";
+    } else {
+        errorEl.style.display = "block";
+    }
+}
+</script>
+</body>
+</html>
