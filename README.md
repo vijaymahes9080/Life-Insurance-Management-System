@@ -1,80 +1,113 @@
-# Life Insurance Management System (LIMS)
+# 🛡️ Life Insurance Management System (LIMS)
 
-[![PHP Version](https://img.shields.io/badge/php-%3E%3D%205.5-blue.svg)](https://www.php.net/)
-[![MySQL](https://img.shields.io/badge/database-MySQL-orange.svg)](https://www.mysql.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<p align="center">
+  <img src="images/lims_banner.png" alt="Life Insurance Management System Banner" width="900" />
+</p>
 
-A comprehensive web-based management portal designed to streamline operations for Life Insurance providers. The portal manages agents, clients, policies, nominees, and premium payment records with distinct access control levels and structured data integrity.
-
----
-
-## 🚀 Key Features
-
-*   **Multilevel Access Control**: Role-based access for Master Agents (Admins), Agents, and Clients.
-*   **Agent Management**: Administrators can register, view, update, and remove agents from different branches.
-*   **Client Management**: Agents can create and maintain client records, including profile photo uploads. Data ownership rules ensure agents can only edit or delete client records they personally registered.
-*   **Nominee Directory**: Link client policies to one or more nominees with specific relationships, priority levels, and personal details.
-*   **Policy Linkage**: Assign policies containing distinct terms and payout percentages to clients.
-*   **Premium Payments Tracking**: Record monthly premium payments, track outstanding dues, calculate late-payment fines, and generate printable receipts.
-*   **Client Self-Service Dashboard**: Clients can log in to view their active policy details, nominee information, and premium transaction history.
+<p align="center">
+  <a href="https://www.php.net/"><img src="https://img.shields.io/badge/PHP-%3E%3D%205.5-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP Version" /></a>
+  <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-F29111?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-44CC11?style=for-the-badge" alt="License: MIT" /></a>
+</p>
 
 ---
 
-## 📊 Database Architecture
+## 📖 Overview
 
-The application relies on a MySQL schema composed of five core tables:
+The **Life Insurance Management System (LIMS)** is a web-based portal designed to modernize and simplify operations for life insurance companies. It provides a secure, relational platform for agents, clients, policy lists, nominees, and premium record-keeping.
 
-1.  **`agent`**: Stores credentials and branch information for insurance agents.
-2.  **`client`**: Contains personal information, associated policy references, parent agent IDs, and profile images.
-3.  **`nominee`**: Holds details of beneficiaries linked to a specific client.
-4.  **`policy`**: Details individual insurance policies, terms (duration), and payout percentages.
-5.  **`payment`**: Tracks financial ledger items for premium payments, fines, and due balances.
+---
+
+## ✨ Features
+
+- **Multilevel Access Control**: Dedicated interfaces tailored to Master Agents (Admins), Agents, and Clients.
+- **Data Segregation**: Agents can only view, edit, or delete records they registered, ensuring information security.
+- **Beneficiary Association**: Link nominees with configurable priority rankings and relationship details to active clients.
+- **Interactive Payments Ledger**: Keep track of premium payments, due statuses, and dynamically calculated late-payment fines.
+- **Print-Ready Receipts**: Generate invoice-like printable receipt vouchers for premium collections.
+- **Client Account Access**: Secure client log-in to trace policy benefits, payment histories, and linked nominees.
+
+---
+
+## 🖥️ System Portals & Mockup Previews
+
+### 📊 Dashboard Metrics
+A unified control center for managing insurance records, monitoring agent performances, and evaluating monthly transaction tables.
+<p align="center">
+  <img src="images/dashboard_mockup.png" alt="LIMS Dashboard Preview" width="800" />
+</p>
+
+### 👥 Portal View
+The responsive layout split allows agents and clients to view policy configurations, outstanding dues, and active profile cards.
+<p align="center">
+  <img src="images/portal_mockup.png" alt="LIMS Portal Split View" width="800" />
+</p>
+
+---
+
+## 📂 Database Architecture & Relational Schema
+
+LIMS leverages five closely linked MySQL tables to maintain complete data integrity:
+
+```mermaid
+erDiagram
+    AGENT ||--o{ CLIENT : registers
+    CLIENT ||--o{ NOMINEE : designates
+    CLIENT ||--o{ PAYMENT : pays
+    POLICY ||--o{ CLIENT : holds
+```
+
+*   **`agent`**: ID, Password, Name, Branch, Phone.
+*   **`client`**: ID, Password, Name, Gender, Birth Date, Marital Status, National ID (NID), Phone, Address, Policy ID, Parent Agent ID, Profile Image Path.
+*   **`nominee`**: Nominee ID, Client ID, Name, Gender, Birth Date, NID, Relationship, Priority Rank, Phone.
+*   **`policy`**: Policy ID, Terms (duration in years), Health Status Requirements, Payout Percentage.
+*   **`payment`**: Receipt Number, Client ID, Month, Amount Paid, Due Balance, Fines, Receiving Agent ID.
 
 ---
 
 ## 🛠️ Technology Stack
 
-*   **Backend**: PHP
-*   **Database**: MySQL / MariaDB
-*   **Frontend**: HTML5, CSS3, JavaScript (enhanced with Bootstrap-based dashboard widgets and styles)
+- **Backend Logic**: PHP (relational/procedural scripts)
+- **Database Engine**: MySQL / MariaDB
+- **User Interface**: HTML5, CSS3, Javascript (responsive Admin Dashboard style elements)
 
 ---
 
-## 📦 Setup & Installation on Localhost
+## ⚙️ Local Installation & Deployment
 
-To deploy this project locally using a stack like **XAMPP**, follow these steps:
+Deploy LIMS locally using environments like **XAMPP**, **WampServer**, or **Laragon**:
 
-### 1. Clone the Repository
-Clone the codebase into your local web server root directory (e.g., `xampp/htdocs/`):
+### 1. Clone the Codebase
+Navigate to your local server's document root (e.g., `xampp/htdocs/`) and clone this repository:
 ```bash
 git clone https://github.com/vijaymahes9080/Life-Insurance-Management-System.git
 ```
 
-### 2. Configure Database Connection
-Open `connection.php` and configure your local MySQL credentials:
+### 2. Set Up the Relational Database
+1. Launch Apache and MySQL services.
+2. Go to **phpMyAdmin** at [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
+3. Click **New** and create a database named `lims`.
+4. Navigate to the **Import** tab, select the backup file located at `database/lims.sql` in this directory, and click **Import** (or **Go**).
+
+### 3. Establish DB Connection
+Open `connection.php` and verify the MySQL connection settings match your setup:
 ```php
 $servername = "localhost";
-$username   = "YOUR_DATABASE_USERNAME"; // Default is usually "root"
-$password   = "YOUR_DATABASE_PASSWORD"; // Default is usually ""
+$username   = "YOUR_DATABASE_USERNAME"; // Defaults to "root" in XAMPP
+$password   = "YOUR_DATABASE_PASSWORD"; // Defaults to empty "" in XAMPP
 $dbname     = "lims";
 ```
 
-### 3. Import Database Schema
-1. Start the **Apache** and **MySQL** services in your XAMPP Control Panel.
-2. Open your web browser and navigate to [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
-3. Create a new database named `lims`.
-4. Click on the **Import** tab, select the backup file located at `database/lims.sql` in this repository, and click **Go**.
-
-### 4. Run the Application
-Access the portal by navigating to:
-[http://localhost/Life-Insurance-Management-System](http://localhost/Life-Insurance-Management-System) (or the corresponding directory name where the code is cloned).
+### 4. Open the Portal
+Navigate to the project directory in your browser:
+[http://localhost/Life-Insurance-Management-System](http://localhost/Life-Insurance-Management-System)
 
 ---
 
 ## 🔑 Default Credentials for Evaluation
 
-| User Type | Username | Password |
+| Role / Profile | Username | Password |
 | :--- | :--- | :--- |
 | **Master Agent (Admin)** | `admin` | `12345` |
-| **Agent** | `555` | `666` |
-| **Client** | `1511986023` | `123` |
+| **Insurance Agent** | `555` | `666` |
+| **Registered Client** | `1511986023` | `123` |
