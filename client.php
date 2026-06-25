@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -125,7 +125,7 @@ tr:nth-child(even) {
 		echo "    <td>".$row["phone"]."</td>\n";
 		echo "    <td>".$row["address"]."</td>\n";
 		echo "    <td>"."<a href='clientStatus.php?client_id=".$row["client_id"]. "'>Client Status</a>"."</td>\n";
-		if($row["agent_id"]== $username || "ahmed" == $username){
+		if($row["agent_id"]== $username || "admin" == $username){
 			echo "<td>"."<a href='editClient.php?client_id=".$row["client_id"]. "'>Edit</a>"."</td>\n";
 		}else {
 			echo "<td>"."<a class=\"dis\" href='editClient.php?client_id=".$row["client_id"]. "'>Edit</a>"."</td>\n";

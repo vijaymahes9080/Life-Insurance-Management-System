@@ -75,6 +75,6 @@ Access the portal by navigating to:
 
 | User Type | Username | Password |
 | :--- | :--- | :--- |
-| **Master Agent (Admin)** | `ahmed` | `12345` |
+| **Master Agent (Admin)** | `admin` | `12345` |
 | **Agent** | `555` | `666` |
 | **Client** | `1511986023` | `123` |

@@ -213,7 +213,7 @@ echo '</div>';
 		$nominee_id = $row["nominee_id"];
 
 		
-		if($agent_id == $username || "ahmed" == $username){
+		if($agent_id == $username || "admin" == $username){
 			echo "<td>"."<a href='editNominee.php?nominee_id=".$row["nominee_id"]. "'>Edit</a>"."</td>\n";
 		}else {
 			echo "<td>"."<a class=\"dis\" href='editNominee.php?nominee_id=".$row["nominee_id"]. "'>Edit</a>"."</td>\n";
@@ -228,7 +228,7 @@ echo '</div>';
 	echo "</br>\n";
 	echo '<b>Nominee</b>'; echo '&nbsp';echo '&nbsp';echo '&nbsp';
 
-	if($agent_id== $username || "ahmed" == $username){
+	if($agent_id== $username || "admin" == $username){
 			echo "<a href='addNominee.php?client_id=".$c_id. "'>Add Nominee</a>";
 		}else {
 			echo "<a class=\"dis\" href='addNominee.php?client_id=".$c_id. "'>Add nominee</a>";
@@ -264,7 +264,7 @@ echo '</div>';
 		echo "    <td>".$row["due"]."</td>\n";
 		echo "    <td>".$row["fine"]."</td>\n";
 		
-		if($row["agent_id"]== $username || "ahmed" == $username){
+		if($row["agent_id"]== $username || "admin" == $username){
 			echo "<td>"."<a href='editPayment.php?recipt_no=".$row["recipt_no"]. "'>Edit</a>"."</td>\n";
 		}else {
 			echo "<td>"."<a class=\"dis\" href='editPayment.php?recipt_no=".$row["recipt_no"]. "'>Edit</a>"."</td>\n";
@@ -276,7 +276,7 @@ echo '</div>';
 	
 	echo "</table>\n";
 
-	if($agent_id== $username || "ahmed" == $username){
+	if($agent_id== $username || "admin" == $username){
 			echo "<td>"."<a href='deleteClient.php?client_id=".$client_id. "'>Delete Client</a>"."</td>\n";
 		}else {
 			echo "<td>"."<a class=\"dis\" href='deleteClient.php?client_id=".$row["client_id"]. "'>Delete Client</a>"."</td>\n";

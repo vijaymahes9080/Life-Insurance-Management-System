@@ -73,7 +73,7 @@ tr:nth-child(even) {
                     <div class="col-md-12">
                         <h1 class="page-head-line">Agents Information  
 			<?php    
-			if ($_SESSION["username"]=="ahmed") {
+			if ($_SESSION["username"]=="admin") {
 			echo '<button class="btn" align="center">';
             echo '<a href="addAgent.php" class="btn">Add Agent</a>';
             echo '</button>';
@@ -97,7 +97,7 @@ include'connection.php';
     echo "    <th>NAME</th>\n";
     echo "    <th>BRANCH</th>\n";
     echo "    <th>PHONE</th>\n";
-	if ($_SESSION["username"]=="ahmed") {
+	if ($_SESSION["username"]=="admin") {
     echo "    <th>PASSWORD</th>\n";
 	echo "    <th>UPDATE</th>\n";
 	}
@@ -112,7 +112,7 @@ include'connection.php';
 		echo "    <td>".$row["name"]."</td>\n";
 		echo "    <td>".$row["branch"]."</td>\n";
 		echo "    <td>".$row["phone"]."</td>\n";
-		if ($_SESSION["username"]=="ahmed") {
+		if ($_SESSION["username"]=="admin") {
 		echo "    <td>".$row["agent_password"]."</td>\n";
 		echo "    <td>"."<a href='editAgent.php?agent_id=".$row["agent_id"]. "'>Edit</a>"."</td>\n";
 		}

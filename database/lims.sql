@@ -44,7 +44,7 @@ INSERT INTO `agent` (`agent_id`, `agent_password`, `name`, `branch`, `phone`) VA
 ('222', '333', 'Sultan', 'Mohakhali', '01521302251'),
 ('555', '666', 'Amit Dutta', 'Mohakhali', '00111'),
 ('agent007', '111', 'Rafiq Bond', 'Raipur', '654654654645'),
-('ahmed', '12345', 'Master User', 'null', 'null');
+('admin', '12345', 'Master User', 'null', 'null');
 
 -- --------------------------------------------------------
 
